@@ -1,11 +1,8 @@
 #!/usr/bin/env groovy
+import org.dog.*
 
-import org.hvbuilders.*
-
-def call(String dataFilePath = 'resources/builders/buildControlData.yaml') {
-  echo "Loading build data from ${dataFilePath}"
-  def loader = new LoadBuildData()
-  def data = loader.LoadBuildControlData(dataFilePath)
-
-  return data
+def call(String name = 'Bernie') {
+  echo "Hello dog, ${name}."
+  def b = new Breed()
+  println "And...he's a ${b.getBreed(name)}!"
 }
