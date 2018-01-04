@@ -2,7 +2,7 @@
 
 import org.hvbuilders.*
 
-def call(buildDataFilePath) {
+def call(String buildDataFilePath) {
   echo "Loading build data from ${buildDataFilePath}"
   def loader = new LoadBuildData()
   def data = loader.LoadBuildControlData(buildDataFilePath)
