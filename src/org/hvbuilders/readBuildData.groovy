@@ -3,8 +3,9 @@ package org.hvbuilders
 public class LoadBuildData
 
   public def LoadBuildControlData(dataFileName){
-    def textData = libraryResource "org/hvbuilders/${dataFileName}"
-    def controlData = readYaml text: textData
+    
+    //def textData = libraryResource "org/hvbuilders/${dataFileName}"
+    def controlData = readYaml file: textData
 
     def builds = []
     controlData.jobGroups.each{  group ->
