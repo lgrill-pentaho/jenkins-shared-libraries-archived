@@ -1,0 +1,972 @@
+#################################
+# YAMLized build-control.csv #
+#################################
+
+jobGroups:
+  # Always required
+
+  group100:
+
+     - jobID           :  clear-build-caches
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  NA
+       directives       :  
+       versionProperty :  pentaho.version
+
+     - jobID           :  delete-build-output-artifacts
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho.version
+
+  group200:
+
+     - jobID           :  coding-standards
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-coding-standards.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  coding-standards.version
+
+  group300:
+
+     - jobID           :  parent-poms
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/maven-parent-poms.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho.version
+
+  group400:
+
+     - jobID           :  parent-poms-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/maven-parent-poms-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Dobfuscate-version-for-license-phase=none clean deploy
+       versionProperty :  pentaho.version
+
+  group500:
+
+     - jobID           :  metastore
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/metastore.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  metastore.version
+
+     - jobID           :  osgi-bundles-lowdeps
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-osgi-bundles.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-P lowdeps -DskipDefault -DskipTests clean deploy
+       versionProperty :  pentaho-osgi-bundles.version
+
+     - jobID           :  oss-license-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/oss-licenses.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  oss-licenses.version
+
+  group600:
+
+     - jobID           :  database-model
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-commons-database.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-database-model.version
+
+     - jobID           :  mongo-utils
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-mongo-utils.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-mongo-utils.version
+
+     - jobID           :  eula-wrap-config
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-eula-wrap-config.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Dobfuscate-version-for-license-phase=none clean deploy
+       versionProperty :  pentaho-eula-wrap-config.version
+
+  group700:
+
+     - jobID           :  reporting-libraries
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-reporting.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Dlibraries -DskipTests -Djavadoc clean deploy
+       versionProperty :  pentaho-reporting.version
+
+     - jobID           :  gwt-widgets
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-commons-gwt-modules.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  commons-gwt.version
+
+     - jobID           :  connections
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-connections.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-connections.version
+
+     - jobID           :  commons-json
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-commons-json.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-json.version
+
+     - jobID           :  application-launcher
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-application-launcher.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-launcher.version
+
+     - jobID           :  version-checker
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-versionchecker.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-versionchecker.version
+
+     - jobID           :  hdfs-vfs
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-hdfs-vfs.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-hdfs-vfs.version
+
+     - jobID           :  s3-vfs
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-s3-vfs.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-s3-vfs.version
+
+     - jobID           :  apache-vfs-browser
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/apache-vfs-browser.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-vfs-browser.version
+
+  group800:
+
+     - jobID           :  xul
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-commons-xul.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-xul.version
+
+     - jobID           :  actionsequence-dom
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-actionsequence-dom.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-actionsequence-dom.version
+
+  group900:
+
+     - jobID           :  metadata-registry
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-registry.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-registry.version
+
+  group1000:
+
+     - jobID           :  mondrian-jar
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/mondrian.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-P !workbench -P !assemblies -Djavadoc clean deploy -DskipTests
+       versionProperty :  mondrian.version
+
+  group1100:
+
+     - jobID           :  pdi-engine-core
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-kettle.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Djavadoc -DskipDefault -P base|plugins|lowdeps clean deploy
+       versionProperty :  pdi.version
+
+  group1200:
+
+     - jobID           :  metadata
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-metadata.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-metadata.version
+
+  group1300:
+
+     - jobID           :  database-gwt
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-commons-database.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-database-model.version
+
+     - jobID           :  vertica-bulkloader
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-vertica-bulkloader.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  vertica-bulkloader-plugin.version
+
+     - jobID           :  pdi-teradata-tpt-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-teradata-tpt-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-teradata-tpt-plugin.version
+
+     - jobID           :  chartbeans
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-chartbeans.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-chartbeans.version
+
+     - jobID           :  license-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-metadata-ee.git | git@github.com:pentaho/pentaho-metadata-ee.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-ee-dsc.version
+
+     - jobID           :  pdi-dataservice-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-dataservice-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-dataservice-client-plugin.version
+
+  group1400:
+
+     - jobID           :  big-data-hadoop-shims
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-hadoop-shims.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -DskipDefault -Deula-wrap -P api|shims|all clean deploy
+       versionProperty :  pentaho-hadoop-shims.version
+
+  group1500:
+
+     - jobID           :  big-data-splunk-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-splunk-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-splunk-plugin.version
+
+     - jobID           :  big-data-mongodb-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-mongodb-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-mongodb-plugin.version
+
+     - jobID           :  big-data-cassandra-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-cassandra-plugin.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-cassandra-plugin.version
+
+  group1600:
+
+     - jobID           :  mondrian-workbench
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/mondrian.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-P !mondrian -P !assemblies clean deploy -DskipTests
+       versionProperty :  mondrian.version
+
+  group1700:
+
+     - jobID           :  mondrian-schema-workbench-plugins
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-mondrianschemaworkbench-plugins.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-mondrianschemaworkbench-plugins.version
+
+  group1800:
+
+     - jobID           :  psw-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/mondrian.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-P !mondrian -P !workbench clean deploy -DskipTests
+       versionProperty :  mondrian.version
+
+  group1900:
+
+     - jobID           :  psw-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-schema-workbench-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=clean deploy -DskipTests -Deula-wrap
+       versionProperty :  mondrian.version
+
+     - jobID           :  reporting-engine
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-reporting.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Dengine -DskipTests -Djavadoc clean deploy
+       versionProperty :  pentaho-reporting.version
+
+  group2000:
+
+     - jobID           :  reportwizard-core
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-reportwizard-core.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-report-wizard-core.version
+
+  group2100:
+
+     - jobID           :  platform-base
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipDefault -P platform-base -DskipTests -Djavadoc clean deploy
+       versionProperty :  platform.version
+
+  group2200:
+
+     - jobID           :  osgi-bundles-highdeps
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-osgi-bundles.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-P highdeps -DskipDefault -DskipTests clean deploy
+       versionProperty :  pentaho-osgi-bundles.version
+
+     - jobID           :  mql-editor
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/mql-editor.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-mql-editor.version
+
+     - jobID           :  pdi-palo-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-palo-core.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-palo-core.version
+
+  group2300:
+
+     - jobID           :  pdi-osgi-bridge
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-osgi-bridge.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-osgi-bridge.version
+
+     - jobID           :  metaverse-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-metaverse.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-metaverse.version
+
+  group2400:
+
+     - jobID           :  pdi-core-plugins
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-kettle.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -DskipDefault -P plugins|highdeps clean deploy
+       versionProperty :  pdi.version
+
+     - jobID           :  pdi-monitoring-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-monitoring-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Deula-wrap clean deploy
+       versionProperty :  pdi-monitoring-plugin.version
+
+     - jobID           :  modeler
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/modeler.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-modeler.version
+
+     - jobID           :  cpf-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/cpf.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-cpf-plugin.version
+
+     - jobID           :  ccc-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/ccc.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve dist dist-source
+       versionProperty :  pentaho-ccc-plugin.version
+
+  group2500:
+
+     - jobID           :  camel-components
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-camel-components.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-camel.version
+
+     - jobID           :  pdi-dataservice-server-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-dataservice-server-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-dataservice-plugin.version
+
+     - jobID           :  reporting-specials
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-reporting.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Dspecials -DskipTests clean deploy
+       versionProperty :  pentaho-reporting.version
+
+     - jobID           :  pdi-platform-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-platform-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-pdi-plugin.version
+
+     - jobID           :  pdi-platform-utils-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-platform-utils-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-platform-utils-plugin.version
+
+     - jobID           :  platform-plugin-jpivot
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-jpivot.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-jpivot-plugin.version
+
+     - jobID           :  cdf-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/cdf.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-cdf-plugin.version
+
+  group2600:
+
+     - jobID           :  common-ui
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-common-ui.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  common-ui.version
+
+  group2700:
+
+     - jobID           :  data-profiling-ce
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-data-profiling.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-data-profiling.version
+
+     - jobID           :  data-access-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/data-access.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-data-access.version
+
+     - jobID           :  marketplace-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/marketplace.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-marketplace-modules.version
+
+     - jobID           :  platform-user-console
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipDefault -P platform-user-console -DskipTests -Djavadoc clean deploy
+       versionProperty :  platform.version
+
+     - jobID           :  big-data-plugin-features
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/big-data-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DfeaturesOnly -DskipTests clean deploy
+       versionProperty :  big-data-plugin.version
+
+     - jobID           :  pdi-data-refinery-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-data-refinery.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-data-refinery-plugin.version
+
+  group2800:
+
+     - jobID           :  pdi-daemon
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  ael.version
+
+     - jobID           :  cde-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/cde.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-cde-plugin.version
+
+     - jobID           :  cpk-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/cpk.git
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho-cpk-plugin.version
+
+     - jobID           :  cgg-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/cgg.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=dist dist-source
+       versionProperty :  pentaho-cgg-plugin.version
+
+  group2900:
+
+     - jobID           :  sparkl-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/sparkl.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve dist dist-source
+       versionProperty :  pentaho-sparkl-plugin.version
+
+     - jobID           :  platform-reporting-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-reporting.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-reporting-plugin.version
+
+  group3000:
+
+     - jobID           :  big-data-hadoop-shims-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-big-data-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Deula-wrap -DskipTests -DskipDefault -P base|all clean deploy
+       versionProperty :  pentaho-hadoop-shims.version
+
+     - jobID           :  cda-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:webdetails/cda.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-cda-plugin.version
+
+  group3100:
+
+     - jobID           :  jdbc-distribution-utility
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/jdbc-distribution-utility.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  jdbc-distribution-utility.version
+
+     - jobID           :  dashboards-chart-editor-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-dashboard-chart-editor.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve gwt-compile jar obfuscate dist dist-source
+       versionProperty :  pentaho-dashboard-chart-editor.version
+
+  group3200:
+
+     - jobID           :  platform-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipDefault -P platform-ee -DskipTests clean deploy
+       versionProperty :  platform.version
+
+  group3300:
+
+     - jobID           :  geo-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-geo.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Deula-wrap clean deploy
+       versionProperty :  pentaho-geo-plugin.version
+
+  group3400:
+
+     - jobID           :  analyzer-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-analyzer.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Dagilebi -Deula-wrap  -DskipTests clean deploy
+       versionProperty :  analyzer-plugin.version
+
+  group3500:
+
+     - jobID           :  platform-chart-plugin-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-ee-chart-plugin.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve jar obfuscate dist-source package
+       versionProperty :  pentaho-ee-chart-plugin.version
+
+     - jobID           :  mobile-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-mobile.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve jar obfuscate dist dist-source package
+       versionProperty :  mobile-plugin.version
+
+     - jobID           :  analysis-plugin-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-analysis-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Deula-wrap clean deploy
+       versionProperty :  analysis-ee-plugin.version
+
+     - jobID           :  pdi-yarn-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-yarn-kettle-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-kettle-yarn-plugin.version
+
+     - jobID           :  data-exploration
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-det.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-det.version
+
+  group3600:
+
+     - jobID           :  data-exploration-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-det-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-det.version
+
+     - jobID           :  karaf-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-karaf-assembly.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-karaf.version
+
+     - jobID           :  dashboards-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-dashboards.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve gwt-compile jar obfuscate dist dist-source package
+       versionProperty :  dashboard-plugin.version
+
+     - jobID           :  pdi-weka-plugins
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-data-mining.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-data-mining.version
+
+     - jobID           :  platform-plugins-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  platform.version
+
+  group3700:
+
+     - jobID           :  pdi-weka-plugins-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-data-mining-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-data-mining.version
+
+     - jobID           :  big-data-plugin-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/big-data-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  big-data-plugin.version
+
+     - jobID           :  pmr-vizor-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-pmr-vizor.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve jar obfuscate dist-source package
+       versionProperty :  pmr-vizor-plugin.version
+
+     - jobID           :  pir-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-plugin-interactive-reporting.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Deula-wrap -DskipTests clean deploy
+       versionProperty :  pir-plugin.version
+
+     - jobID           :  pdi-scheduler-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-scheduler-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-scheduler-plugin.version
+
+     - jobID           :  pdi-google-analytics-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-google-analytics-plugin.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve jar obfuscate dist-source package
+       versionProperty :  pdi-google-analytics-plugin.version
+
+     - jobID           :  pdi-google-docs-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-google-docs-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-google-docs-plugin.version
+
+     - jobID           :  pdi-jms-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-jms-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-jms-plugin.version
+
+     - jobID           :  pdi-sdk-plugins
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-sdk-plugins.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Deula-wrap -DskipTests clean deploy
+       versionProperty :  pdi-sdk-plugins.version
+
+     - jobID           :  pdi-r-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-r-plugin.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve jar obfuscate dist-source package
+       versionProperty :  pdi-r-plugin.version
+
+     - jobID           :  pdi-sap-hana-bulk-loader-plugin
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-sap-hana-bulk-loader-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Deula-wrap clean deploy
+       versionProperty :  pdi-sap-hana-bulk-loader-plugin.version
+
+  group3800:
+
+     - jobID           :  karaf-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-karaf-ee-assembly.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-karaf.version
+
+  group3900:
+
+     - jobID           :  big-data-plugin-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-big-data-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Deula-wrap -DskipTests -DskipDefault -P assemblies|hdp26|cdh512|mapr520 clean deploy
+       versionProperty :  big-data-plugin.version
+
+     - jobID           :  prd-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-reporting.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Ddesigner -DskipTests -Djavadoc clean deploy
+       versionProperty :  pentaho-reporting.version
+
+  group4000:
+
+     - jobID           :  prd-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-reportdesigner-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Deula-wrap -DskipTests clean deploy
+       versionProperty :  pentaho-reporting.version
+
+     - jobID           :  pdi-pur-plugin-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-ee-plugin.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pdi-pur-plugin.version
+
+  group4100:
+
+     - jobID           :  pdi-operations-mart-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pdi-operations-mart.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Deula-wrap clean deploy
+       versionProperty :  pentaho-operations-mart.version
+
+  group4200:
+
+     - jobID           :  pdi-client-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-kettle.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -DskipDefault -P assemblies clean deploy
+       versionProperty :  pdi.version
+
+  group4300:
+
+     - jobID           :  pdi-client-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-ee.git
+       scmBranch       :  master
+       directives       :  RELEASE_MODE=false&BUILD_TARGET=clean-all resolve resolve-obf di-package
+       versionProperty :  pdi.version
+
+  group4400:
+
+     - jobID           :  metadata-editor
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-metadata-editor.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  pentaho-metadata.version
+
+     - jobID           :  platform-server-assembly
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipDefault -P platform-assemble -DskipTests clean deploy
+       versionProperty :  platform.version
+
+     - jobID           :  pad
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-aggdesigner.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests clean deploy
+       versionProperty :  aggdesigner.version
+
+  group4500:
+
+     - jobID           :  foundry-workers-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipTests -Deula-wrap clean deploy
+       versionProperty :  worker-nodes.version
+
+     - jobID           :  platform-server-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-platform-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-DskipDefault -P platform-ee-assemble -Deula-wrap -DskipTests clean deploy
+       versionProperty :  platform.version
+
+     - jobID           :  metadata-editor-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-metadata-editor-ee.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all resolve package
+       versionProperty :  pentaho-metadata.version
+
+     - jobID           :  pad-assembly-ee
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-aggdesigner-ee.git
+       scmBranch       :  master
+       directives       :  MAVEN_GOALS=-Deula-wrap -DskipTests clean deploy
+       versionProperty :  aggdesigner.version
+
+     - jobID           :  platform-sdk
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-sdk.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=clean-all assemble
+       versionProperty :  pdi-sdk-plugins.version
+
+  group4600:
+
+     - jobID           :  installer-upgrade-utility
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  platform.version
+
+  group4700:
+
+     - jobID           :  installer-bisuite
+       executeFlag     :  true
+       scmUrl          :  git@github.com:pentaho/pentaho-installer.git
+       scmBranch       :  master
+       directives       :  BUILD_TARGET=assemble-x64-bisuite-windows-installer assemble-x64-bisuite-linux-installer assemble-x64-bisuite-mac-installer
+       versionProperty :  pentaho.version
+
+  group4800:
+
+     - jobID           :  harvester
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho.version
+
+  group4900:
+
+     - jobID           :  engops/remote-ip-job-trigger
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  NA
+       directives       :  
+       versionProperty :  pentaho.version
+
+     - jobID           :  engops/regression-smoketest-job-trigger
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  NA
+       directives       :  
+       versionProperty :  pentaho.version
+
+     - jobID           :  snapshot-checker
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  NA
+       directives       :  
+       versionProperty :  pentaho.version
+
+     - jobID           :  obfuscation-verifier-job-trigger
+       executeFlag     :  true
+       scmUrl          :  null
+       scmBranch       :  master
+       directives       :  
+       versionProperty :  pentaho.version
